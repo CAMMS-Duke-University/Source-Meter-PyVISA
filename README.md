@@ -8,7 +8,7 @@ GPIB Operate Scientific Instruments for Keithley 2410
 
 
 | Mode State  | Equivalent remote command |
-| ----------- | ----------- | ----------- |
+| ----------- | ----------- |
 | Concurrent Functions = OFF       | :SENS:FUNC:CONC OFF                  |
 | Sense Function = Source          | :SENS:FUNC <source_ function>        |
 | Sense Volts NPLC = 1.0           | :SENS:VOLT:NPLC 1.0                  |
