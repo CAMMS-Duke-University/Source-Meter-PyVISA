@@ -49,37 +49,7 @@ def Instrument_Measure_Voltage(rm,instrument_name):
     instrument_handler.write(":OUTP OFF") #turn output off
     instrument_handler.query("status:measurement?")
     instrument_handler.write("trace:clear; trace:feed:control next")
-
-    """
-    # The next step is to write all the measurement parameters
-    instrument_handler.write("*rst; status:preset; *cls")
-    interval_in_ms = 500 #  particular the interval time (500ms)
-    number_of_readings = 10 # number of readings (10) to the instrument.
-    instrument_handler.write("status:measurement:enable 512; *sre 1")
-    instrument_handler.write("sample:count %d" % number_of_readings)
-    instrument_handler.write("trigger:source bus")
-    instrument_handler.write("trigger:delay %f" % (interval_in_ms / 1000.0))
-    instrument_handler.write("trace:points %d" % number_of_readings)
-    instrument_handler.write("trace:feed sense1; trace:feed:control next")
-    # The next three lines make the instrument wait for a trigger pulse, trigger it, and wait until it sends a “service request”:
-    instrument_handler.write("initiate")
-    instrument_handler.assert_trigger()
-    instrument_handler.wait_for_srq()
-    voltages = instrument_handler.query("trace:data?")
-    #voltages = instrument_handler.query_ascii_values("trace:data?")
-    instrument_handler.query("status:measurement?")
-    instrument_handler.write("trace:clear; trace:feed:control next")
-    """
     return(voltages)
 
 voltages = Instrument_Measure_Voltage(rm, GPIB_A)
 print(voltages)
-
-
-"""
-print("-----")
-list_of_resources = rm.list_resources()
-print("-----")
-print(list_of_resources[-1])
-my_instrument = rm.open_resource(list_of_resources[-1])
-"""
